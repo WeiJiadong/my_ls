@@ -8,11 +8,14 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-/*状态码的定义*/
-#define OK     ( 0)
-#define NG     (-1)
+/*常量宏值定义*/
+#define MAX     (4096)
 
-/*参数宏值*/
+/*状态码的定义*/
+#define OK      ( 0)
+#define NG      (-1)
+
+/*参数宏值定义*/
 #define NONE    (1)
 #define IS_l    (1<<1)
 #define IS_a    (1<<2)
@@ -25,5 +28,10 @@
 void show_usage(char *proc);
 int  myls_main(int argc, char *argv[]);
 int  get_argopt(char *argstr);
-int get_type(int argc, char *argv[], char **name);
+int  get_type(int argc, char *argv[], char **name);
+int  get_info(char **str, char *name, int how);
+int  get_file_info(char **str, char *name, int how);
+int  get_dir_info(char **str, char *name, int how);
+void print_info(char *str);
+
 #endif/*MYLS_MAIN_H_INCLUDED*/

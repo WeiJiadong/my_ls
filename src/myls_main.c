@@ -5,6 +5,7 @@ int myls_main(int argc, char *argv[])
     int how    = NONE;
     int index  = 0;
     char *name = NULL;
+    char *str  = NULL;
 
     for (index = 1; index < argc; ++index) {
         res = get_argopt(argv[index]);
@@ -24,6 +25,17 @@ int myls_main(int argc, char *argv[])
         return res;
     }/*end if*/
 
+    how |= res;
+
+    res = get_info(&str, name, how);
+    if (NG == res) {
+        printf("文件或者文件夹不存在！\n");
+        return res;
+    }/*end if*/
+
+    print_info(str);
+
+    free(str);
 
     return res;
 }
