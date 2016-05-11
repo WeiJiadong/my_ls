@@ -22,6 +22,7 @@ int myls_main(int argc, char *argv[])
 
     res = get_type(argc, argv, &name);
     if (NG == res) {
+        printf("文件或者文件夹不存在！\n");
         return res;
     }/*end if*/
 
@@ -29,12 +30,11 @@ int myls_main(int argc, char *argv[])
 
     res = get_info(&str, name, how);
     if (NG == res) {
-        printf("文件或者文件夹不存在！\n");
         return res;
     }/*end if*/
 
     print_info(str);
-
+    printf("\n");
     free(str);
 
     return res;

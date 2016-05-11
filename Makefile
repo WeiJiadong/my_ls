@@ -13,6 +13,7 @@ all : install
 install :
 	@gcc ${SRC_PATH}${SRC_NAME} -o ${BIN_PATH}${RES_NAME} -I ${HEAD_PATH} \
 		&& echo -e "\e[0;31m" ${SUCC_STR} "\e[0;0m"
+.PHONY : clean
 clean :
 	@rm -f ${BIN_PATH}${RES_NAME}                                          \
 		&& echo -e "\e[0;31m" ${REMV_STR} "\e[0;0m"
