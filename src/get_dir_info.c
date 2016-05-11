@@ -32,7 +32,7 @@ int get_dir_info(char *name, int how)
     while ((ptr = readdir(dir)) != NULL) {
         if ('.' == ptr->d_name[0]) {
             if (IS_a & how) {
-                printf("%s :\n", ptr->d_name);
+                printf("%s\n", ptr->d_name);
             }
         }else {
             memset(path, 0x0, SIZE);
@@ -51,11 +51,13 @@ int get_dir_info(char *name, int how)
                 memset(result, 0x0, MAX);
                 get_file_info(&result, path, how);
                 print_info(result);
-            }else {
+            }else {                          /*是文件夹*/
                 if (how & IS_R) {
                     get_dir_info(path, how);
                 }else {
-                    printf("%s ", ptr->d_name);
+                    memset(result, 0x0, MAX);
+                    get_file_info(&result, path, how);
+                    print_info(result);
                 }/*end else*/
             }/*end else*/
         }/*end else*/
